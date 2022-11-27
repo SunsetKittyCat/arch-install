@@ -22,7 +22,7 @@ DRIVE_LIST=($(lsblk -d | awk '{print "/dev/" $1}' | grep 'sd\|hd\|vd\|nvme\|mmcb
 PS3=$'\nSelect A Drive To Parition: '
 
 # Prompt User For The Drive That Should Be Partitioned
-# If Chosen By User, Display The Details Of Each Drive So That The User May More Easily Identify The Drive That They Want To Parition
+# If Chosen By User, Display The Details Of Each Drive So That The User May More Easily Identify The Drive That They Want To Partition
 select DRIVE in "${DRIVE_LIST[@]}"; do
     # Clear Previous Prompt Lines
     echo -en "\033[$((${#DRIVE_LIST[@]} + 2))F\033[J"
@@ -65,9 +65,9 @@ if [[ -d /sys/firmware/efi/ ]]; then
     align-check optimal 3
     
     # Set Partition Variables
-    ESP_PARTITION=${DEVICE}1
-    SWAP_PARTITION=${DEVICE}2
-    ROOT_PARTITION=${DEVICE}3
+    ESP_PARTITION=${DRIVE}1
+    SWAP_PARTITION=${DRIVE}2
+    ROOT_PARTITION=${DRIVE}3
     
     # Format Partiions
     mkfs.fat -F 32 $ESP_PARTITION
@@ -91,10 +91,10 @@ else
     align-check optimal 2
     
     # Set Partition Variables
-    SWAP_PARTITION=${DEVICE}1
-    ROOT_PARTITION=${DEVICE}2
+    SWAP_PARTITION=${DRIVE}1
+    ROOT_PARTITION=${DRIVE}2
     
-    # Format Partiions
+    # Format Partitions
     mkswap $SWAP_PARTITION
     mkfs.ext4 $ROOT_PARTITION
     
