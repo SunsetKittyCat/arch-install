@@ -2,7 +2,7 @@
 echo -e 'xset s 300 5\nxss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &\nstalonetray &\nsleep 0.5\nxdotool windowunmap "$(xdotool search --class stalonetray)"\nclipmenud &\nexec xmonad' >> ~/.xinitrc
 
 # startx On Login Into TTY 1
-echo -e '\nif [ -z "\${DISPLAY}" ] && [ "\${XDG_VTNR}" -eq 1 ]; then\n\texec startx\nfi' >> ~/.bash_profile
+echo -e '\nif [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then\n\texec startx\nfi' >> ~/.bash_profile
 
 # Customize stalonetray To Have A Width Of 8 Icons, A Black Background, Force Icon Sizes To Be Equal To icon_size, Grow The Tray Towards The North West Direction, Position Icons Closer To The North East Corner, Icon Size Of 12, Make Tray Sticky Across Multiple Desktops, Bottom Window Layer, And Hide The Tray's Window From A Taskbar
 echo -e 'geometry 8x1-0+0\nmax_geometry 8x1-0+0\nbackground "#000000"\nkludges force_icons_size\ngrow_gravity NW\nicon_gravity NE\nicon_size 12\nsticky true\nwindow_layer bottom\nskip_taskbar true' > ~/.stalonetrayrc
