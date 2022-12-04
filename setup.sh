@@ -65,9 +65,10 @@ if [[ -d /sys/firmware/efi/ ]]; then
     align-check optimal 3
     
     # Set Partition Variables
-    ESP_PARTITION=$(fdisk -l $DRIVE | grep '^/dev' | cut -d' ' -f1 | sed -n 1p)
-    SWAP_PARTITION=$(fdisk -l $DRIVE | grep '^/dev' | cut -d' ' -f1 | sed -n 2p)
-    ROOT_PARTITION=$(fdisk -l $DRIVE | grep '^/dev' | cut -d' ' -f1 | sed -n 3p)
+    PARTITIONS=$(fdisk -l $DRIVE | grep '^/dev' | cut -d' ' -f1)
+    ESP_PARTITION=$(echo "$PARTITIONS" | sed -n 1p)
+    SWAP_PARTITION=$(echo "$PARTITIONS" | sed -n 2p)
+    ROOT_PARTITION=$(echo "$PARTITIONS" | sed -n 3p)
     
     # Format Partiions
     mkfs.fat -F 32 $ESP_PARTITION
@@ -91,8 +92,9 @@ else
     align-check optimal 2
     
     # Set Partition Variables
-    SWAP_PARTITION=$(fdisk -l $DRIVE | grep '^/dev' | cut -d' ' -f1 | sed -n 1p)
-    ROOT_PARTITION=$(fdisk -l $DRIVE | grep '^/dev' | cut -d' ' -f1 | sed -n 2p)
+    PARTITIONS=$(fdisk -l $DRIVE | grep '^/dev' | cut -d' ' -f1)
+    SWAP_PARTITION=$(echo "$PARTITIONS" | sed -n 1p)
+    ROOT_PARTITION=$(echo "$PARTITIONS" | sed -n 2p)
     
     # Format Partitions
     mkswap $SWAP_PARTITION
