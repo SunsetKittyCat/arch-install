@@ -2,7 +2,7 @@
 pacman --noconfirm --needed -S opendoas
 
 # Smooth Transition From Sudo To Doas For Programs That Rely On sudo
-ln -s $(which doas) /usr/bin/sudo
+ln -s /usr/bin/doas /usr/bin/sudo
 
 # Permit root User To Use doas Without Password Auth
 # Permit Users In wheel Group To Use doas With Password Auth
