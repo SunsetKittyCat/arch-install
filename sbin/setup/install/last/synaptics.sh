@@ -1,0 +1,5 @@
+# Install xf86-input-synaptics For Touchpad Configuration
+pacman --noconfirm --needed -S xf86-input-synaptics
+
+# Configure Frequently Used Touchpad Options
+echo -e 'Section "InputClass"\n    Identifier "touchpad"\n    Driver "synaptics"\n    MatchIsTouchpad "on"\n        Option "TapButton1" "1"\n        Option "TapButton2" "3"\n        Option "TapButton3" "2"\n        Option "VertEdgeScroll" "on"\n        Option "VertTwoFingerScroll" "on"\n        Option "HorizEdgeScroll" "on"\n        Option "HorizTwoFingerScroll" "on"\n        Option "CircularScrolling" "on"\n        Option "CircScrollTrigger" "2"\n        Option "EmulateTwoFingerMinZ" "40"\n        Option "EmulateTwoFingerMinW" "8"\n        Option "CoastingSpeed" "0"\n        Option "FingerLow" "30"\n        Option "FingerHigh" "50"\n        Option "MaxTapTime" "125"\nEndSection' > /etc/X11/xorg.conf.d/70-synaptics.conf
