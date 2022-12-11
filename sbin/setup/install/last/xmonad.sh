@@ -3,4 +3,4 @@ pacman --noconfirm --needed -S xmonad xmonad-contrib xsecurelock xss-lock player
 
 # Recompile Xmonad Every Time That It Is Updated
 mkdir -p /etc/pacman.d/hooks
-echo -e "[Trigger]\nOperation = Upgrade\nType = Package\nTarget = xmonad\n\n[Action]\nDescription = Recompiling xmonad...\nWhen = PostTransaction\nExec = /usr/local/sbin/utility/recompile-xmonad.sh" > /etc/pacman.d/hooks/xmonad.hook
+echo -e "[Trigger]\nOperation = Upgrade\nType = Package\nTarget = xmonad\n\n[Action]\nDescription = Recompiling xmonad...\nWhen = PostTransaction\nExec = /usr/sbin/utility/recompile-xmonad.sh" > /etc/pacman.d/hooks/xmonad.hook
