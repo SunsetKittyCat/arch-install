@@ -1,5 +1,5 @@
 # Get CPU Vendor
-CPU_VENDOR=$(lscpu | grep "Vendor")
+CPU_VENDOR=$(lscpu | grep 'Vendor')
 
 # Install intel-ucode If CPU Vendor Is Intel
 if [[ "${CPU_VENDOR,,}" =~ "intel" ]]; then

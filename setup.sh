@@ -1,6 +1,6 @@
 # Check Connection To Internet
 if ! $(nc -zw1 archlinux.org 80); then
-    echo "Not Connected To The Internet"
+    echo 'Not Connected To The Internet'
     exit 1
 fi
 
@@ -136,7 +136,7 @@ arch-chroot /mnt /usr/bin/mkinitcpio -P
 
 
 # Change Root Password
-echo -e "Change Root Password"
+echo -e 'Change Root Password'
 arch-chroot /mnt /usr/bin/passwd
 
 

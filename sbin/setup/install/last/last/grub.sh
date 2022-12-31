@@ -16,7 +16,7 @@ else
 fi
 
 # Hide The GRUB Menu On Boot
-sed -i "s/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0\nGRUB_TIMEOUT_STYLE=hidden/" /etc/default/grub
+sed -i 's/GRUB_TIMEOUT=5/GRUB_TIMEOUT=0\nGRUB_TIMEOUT_STYLE=hidden/' /etc/default/grub
 
 # Generate grub.cfg
 grub-mkconfig -o /boot/grub/grub.cfg

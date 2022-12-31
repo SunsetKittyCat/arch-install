@@ -11,8 +11,8 @@ if [[ $GPU_VENDORS =~ "amd" ]]; then
 fi
 # If Intel GPU Is Present, Install xf86-video-intel mesa vulkan-intel intel-media-driver For Intel GPU Acceleration And Vulkan Support
 if [[ $GPU_VENDORS =~ "intel" ]]; then
-    pacman --noconfirm --needed -S xf86-video-intel mesa vulkan-intel intel-media-driver
-    echo -e 'Section "Device"\n     Identifier "Intel Graphics"\n     Driver "intel"\n	 Option "AccelMethod" "sna"\n	 Option "TearFree" "true"\nEndSection' > /etc/X11/xorg.conf.d/20-intel.conf
+    pacman --noconfirm --needed -S mesa vulkan-intel intel-media-driver
+    echo -e 'Section "Device"\n     Identifier "Intel Graphics"\n     Driver "modesetting"\nEndSection' > /etc/X11/xorg.conf.d/20-intel.conf
 fi
 # If NVidia GPU Is Present, Install nvidia nvidia-utils For NVidia GPU Acceleration And Vulkan Support
 if [[ $GPU_VENDORS =~ "nvidia" ]]; then

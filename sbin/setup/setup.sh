@@ -1,7 +1,7 @@
 # Recursively Execute All Install Scripts In A Directory
 execute_scripts() {
     # Execute Scripts
-    for SCRIPT in $(find -H $1 -maxdepth 1 -type f ! -name "setup.sh" ! -name "user.sh"); do
+    for SCRIPT in $(find -H $1 -maxdepth 1 -type f ! -name 'setup.sh' ! -name 'user.sh'); do
         /bin/bash $SCRIPT
     done
     
@@ -13,6 +13,6 @@ execute_scripts() {
 }
 
 # Run General Setup Scripts
-execute_scripts "/usr/sbin/setup"
+execute_scripts '/usr/sbin/setup'
 # Install Packages
-execute_scripts "/usr/sbin/setup/install"
+execute_scripts '/usr/sbin/setup/install'
