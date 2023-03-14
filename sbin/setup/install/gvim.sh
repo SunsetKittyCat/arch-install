@@ -1,5 +1,0 @@
-# Install gvim For vim With Clipboard Support
-pacman --noconfirm --needed -S gvim
-
-# Enable Clipboard Support, Enable Saving Current Vim Session, Enable Loading Saved Sessions, Enable Opening A Terminal Window With Ctrl-T, Enable Spell Checking, Display Line Numbers
-echo -e '\n" Enable Clipboard To Correspond To The "+ Register\n\n" Vim "Workplace" Session\n" Save The Current Session To A .session.vim File In The Current Working Directory With F2\nmap <F2> :mksession! ./.session.vim <cr>\n" Load A Saved .session.vim From The Current Working Directory With F3\nmap <F3> :source ./.session.vim <cr>\n\n" Open A Terminal Window With Ctrl-T\nnnoremap <C-T> :ter ++rows=10<CR><C-W>:setl wfh<CR><C-W>J\n\n" Spell Check\nset spell\n\n" Line Numbers\nset number' >> /usr/share/vim$(ls /usr/share/vim/ | grep -v vimfiles | head -1)/defaults.vim
