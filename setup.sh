@@ -56,10 +56,10 @@ fi
 if [[ -d /sys/firmware/efi/ ]]; then
     parted -s -a optimal "$DRIVE" \
     mklabel gpt \
-    mkpart fat32 1MiB 301MiB \
+    mkpart boot fat32 1MiB 301MiB \
     set 1 esp on \
-    mkpart linux-swap 301MiB 2349MiB \
-    mkpart ext4 2349MiB $(($DRIVE_SIZE - 17408))B \
+    mkpart swap linux-swap 301MiB 2349MiB \
+    mkpart root ext4 2349MiB $(($DRIVE_SIZE - 17408))B \
     align-check optimal 1 \
     align-check optimal 2 \
     align-check optimal 3
@@ -85,8 +85,8 @@ if [[ -d /sys/firmware/efi/ ]]; then
 else
     parted -s -a optimal "$DRIVE" \
     mklabel msdos \
-    mkpart primary linux-swap 1MiB 2049MiB \
-    mkpart primary ext4 2049MiB $(($DRIVE_SIZE - 17408))B \
+    mkpart primary swap linux-swap 1MiB 2049MiB \
+    mkpart primary root ext4 2049MiB $(($DRIVE_SIZE - 17408))B \
     set 2 boot on \
     align-check optimal 1 \
     align-check optimal 2
